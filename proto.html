@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-image: url("https://wallpapers.com/images/featured/flower-aesthetic-pictures-510384oukz7ybniz.jpg");
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .main {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        nav ul {
+            list-style-type: none;
+            float: right;
+            margin-top: 25px;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            padding: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: black;
+            transition: 0.6s ease;
+        }
+
+        .header-text {
+            font-size: 35px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            color: white;
+        }
+
+        .header-text h3 {
+            font-size: 20px;
+        }
+
+        #about {
+            background-image: url("https://wallpapers.com/images/featured/flower-aesthetic-pictures-510384oukz7ybniz.jpg");
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            color: white;
+        }
+
+        .about-col-1, .about-col-2 {
+            padding: 0;
+            width: 50%;
+        }
+
+        .raw {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .tab-titles {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        .tab-links {
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab-links::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #f00;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+
+        .tab-links.active-link::after {
+            width: 100%;
+        }
+
+        .tab-contents {
+            display: none;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        .tab-contents ul li span {
+            color: #000;
+            font-size: 14px;
+        }
+
+        .work-list {
+            background-image: url("https://wallpapers.com/images/featured/flower-aesthetic-pictures-510384oukz7ybniz.jpg");
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+
+        .work {
+           
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .layer {
+            width: 100%;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            transition: height 0.5s;
+        }
+
+        .layer h3 {
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .layer a {
+            margin-top: 20px;
+            color: pink;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            background: rgba(255, 0, 0, 0.5);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .work:hover img {
+            transform: scale(1.1);
+        }
+
+        .work:hover .layer {
+            height: 100px;
+        }
+
+        .btn {
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #000;
+            padding: 14px 50px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #000;
+            transition: background 0.5s;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #ddd;
+        }
+
+        .contact-left {
+            flex-basis: 35%;
+        }
+
+        .contact-right {
+            flex-basis: 60%;
+        }
+
+        .contact-left p {
+            margin-top: 30px;
+        }
+
+        .contact-left p i {
+            margin-right: 15px;
+            color: pink;
+            font-size: 25px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            font-size: 30px;
+            margin-right: 15px;
+            color: #000;
+            display: inline-block;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f00;
+            transform: translate(-5px);
+        }
+
+        .btn2 {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 14px 68px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+        }
+
+        .contact-right form {
+            width: 100%;
+            border: 0;
+            outline: none;
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            color: #333;
+            font-size: 18px;
+            border-radius: 6px;
+        }
+
+        .contact-right form input,
+        .contact-right form textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .contact-right form textarea {
+            resize: vertical;
+        }
+
+        .copyright {
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background: #333;
+            font-weight: 300;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .copyright i {
+            color: #f00;
+        }
+
+        nav.fas {
+            display: none;
+        }
+
+        @media only screen and (max-width: 600px) {
+            header {
+                background-image: url("https://images8.alphacoders.com/132/1327993.png");
+            }
+
+            .header-text {
+                margin-top: 100px;
+                font-size: 16px;
+            }
+
+            .header-text h1 {
+                font-size: 30px;
+            }
+
+            nav.fas {
+                display: block;
+                font-size: 25px;
+                cursor: pointer;
+            }
+
+            nav ul {
+                background: #333;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 200px;
+                height: 100vh;
+                padding-top: 50px;
+                z-index: 2;
+                display: none;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 25px 0;
+            }
+
+            nav ul.show {
+                display: block;
+            }
+
+            nav ul.fas {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="main">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+                <i class="fas fa-times" onclick="closeMenu()"></i>
+            </ul>
+            <i class="fas fa-bars" onclick="openMenu()"></i>
+        </nav>
+        <div class="header-text">
+            <h1>Fashion Designer</h1>
+            <h3>Hi, I am Shruthi Bai R<br>From Bengaluru</h3>
+        </div>
+    </div>
+</header>
+
+<div id="about">
+    <div class="container">
+        <div class="raw">
+            <div class="about-col-1">
+                <img src="https://i.pinimg.com/474x/51/af/10/51af107815de31812811f5dcce68d7bd.jpg" alt="About Me">
+            </div>
+            <div class="about-col-2">
+                <h1>About Me</h1>
+                <p> i am Shruthi from bms college.Everyone needs a little inspiration from time to time. Some days can be harder than others to pick out an outfit. Not only do we have so many options of styles but also colors and patterns, plus we need to match our outfit to fit our mood and make sure that it will go well with the weather or air conditioning depending on where our day is taking us.</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="openTab('skills')">Skills</p>
+                    <p class="tab-links" onclick="openTab('education')">Education</p>
+                </div>
+                <div class="tab-contents" id="skills">
+                    <ul>
+                        <li><span>Fashion</span><br>Designing</li>
+                        <li><span>Web Development</span><br>Web app development</li>
+                        <li><span>App Development</span><br>Designing web/app</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2024</span><br>Fashion Designing</li>
+                        <li><span>2024</span><br>Web App Development</li>
+                        <li><span>2024</span><br>Designing Web/App</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="portfolio">
+    <div class="container">
+        <h1>My Work</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="https://www.cmr.edu.in/blog/wp-content/uploads/2023/12/Vital-Elements-Every-Student-Should-Be-Aware-Of-Fashion-Designing.png"alt="Social Media App">
+                <div class="layer">
+                    <h3>Social Media App</h3>
+                    <p>The app connects you with talented people around the world. Download the app from the Play Store.</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="https://media.blackandwhite-ff.com/10000/e470375b-2419-4ff0-af53-6445e7c9c95a_01-americandesigners-tomford.jpg" alt="Music App">
+                <div class="layer">
+                    <h3>Music App</h3>
+                    <p>The app connects you with talented people around the world. Download the app from the Play Store.</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="https://study.com/cimages/videopreview/pxdqikdt2t.jpg" alt="Online Shopping App">
+                <div class="layer">
+                    <h3>Online Shopping App</h3>
+                    <p>The app connects you with talented people around the world. Download the app from the Play Store.</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn">See More</a>
+    </div>
+</div>
+
+<div id="contact">
+    <div class="container">
+        <div class="raw">
+            <div class="contact-left">
+                <h1>Contact Me</h1>
+                <p><i class="fas fa-paper-plane"></i> shruthibair2004@gmail.com</p>
+                <p><i class="fas fa-phone-alt"></i> 9480645201</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="copyright">
+    <p>&copy; 2024 shruthi ai R. Made with <i class="fas fa-heart"></i> by Easy Tutorials</p>
+</div>
+
+<script>
+    function openTab(tabName) {
+        var tabLinks = document.getElementsByClassName('tab-links');
+        var tabContents = document.getElementsByClassName('tab-contents');
+
+        // Remove active class from all tab links and contents
+        Array.from(tabLinks).forEach(function(link) {
+            link.classList.remove('active-link');
+        });
+
+        Array.from(tabContents).forEach(function(content) {
+            content.classList.remove('active-tab');
+        });
+
+        // Add active class to the clicked tab link and corresponding content
+        document.querySelector(`.tab-links[onclick="openTab('${tabName}')"]`).classList.add('active-link');
+        document.getElementById(tabName).classList.add('active-tab');
+    }
+
+    function openMenu() {
+        document.querySelector('nav ul').classList.add('show');
+    }
+
+    function closeMenu() {
+        document.querySelector('nav ul').classList.remove('show');
+    }
+</script>
+
+</body>
+</html>
+
